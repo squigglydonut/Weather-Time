@@ -43,7 +43,7 @@ exports.handle = function handle(client) {
       return Boolean(client.getConversationState().weatherCity)
     },
 
-    extractInfo() {
+        extractInfo() {
       const city = firstOfEntityRole(client.getMessagePart(), 'city')
 
       if (city) {
@@ -55,13 +55,20 @@ exports.handle = function handle(client) {
       }
     },
 
-    prompt() {
-      client.addResponse('app:response:name:promt/weather_city')
+      prompt() {
+      client.addResponse('app:response:name:prompt/weather_city')
       client.done()
     },
-  }
+  })
 
-  const provideWeather = client.createStep({
+    prompt() {
+      //Need to prompt user for city
+      console.log('Need to ask user for city')
+      client.done()
+    },
+  })
+
+    const provideWeather = client.createStep({
     satisfied() {
       return false
     },
@@ -71,6 +78,12 @@ exports.handle = function handle(client) {
       client.done()
     },
   })
+
+
+
+  
+
+
 
   client.runFlow({
     classifications: {
