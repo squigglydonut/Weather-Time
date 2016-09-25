@@ -39,32 +39,27 @@ exports.handle = function handle(client) {
   })
 
   const collectCity = client.createStep({
-    satisfied() {
-      return Boolean(client.getConversationState().weatherCity)
-    },
+  satisfied() {
+    return Boolean(client.getConversationState().weatherCity)
+  },
 
-        extractInfo() {
-      const city = firstOfEntityRole(client.getMessagePart(), 'city')
+  prompt() {
+    // Need to prompt user for city    
+    console.log('Need to ask user for city')
+    client.done()
+  },
+})
 
-      if (city) {
-        client.updateConversationState({
-          weatherCity: city,
-        })
+const provideWeather = client.createStep({
+  satisfied() {
+    return false
+  },
 
-        console.log('User wants the weather in:', city.value)
-      }
-    },
-
-      prompt() {
-      client.addResponse('app:response:name:prompt/weather_city')
-      client.done()
-    },
-
-    prompt() {
-      //Need to prompt user for city
-      console.log('Need to ask user for city')
-      client.done()
-    }}
+  prompt() {
+    // Need to provide weather
+    client.done()
+  },
+})
 
     const provideWeather = client.createStep({
     satisfied() {
