@@ -59,7 +59,6 @@ exports.handle = function handle(client) {
       client.addResponse('app:response:name:prompt/weather_city')
       client.done()
     },
-  )
 
     prompt() {
       //Need to prompt user for city
