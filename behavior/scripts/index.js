@@ -70,7 +70,7 @@ const provideWeather = client.createStep({
       // Need to provide weather
       client.done()
     },
-  })
+  }
 
 
 
