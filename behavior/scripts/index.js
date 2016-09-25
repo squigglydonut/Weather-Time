@@ -65,7 +65,6 @@ exports.handle = function handle(client) {
       console.log('Need to ask user for city')
       client.done()
     },
-  }
 
     const provideWeather = client.createStep({
     satisfied() {
