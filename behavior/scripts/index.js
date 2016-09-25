@@ -59,14 +59,14 @@ exports.handle = function handle(client) {
       client.addResponse('app:response:name:prompt/weather_city')
       client.done()
     },
-  })
+  )
 
     prompt() {
       //Need to prompt user for city
       console.log('Need to ask user for city')
       client.done()
     },
-  }
+  }}
 
     const provideWeather = client.createStep({
     satisfied() {
